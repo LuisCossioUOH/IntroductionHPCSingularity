@@ -18,8 +18,8 @@ singularity build ultra.sif docker://ultralytics/ultralytics
 Sandbox images are allow to be modified, unlike .sif files. 
 
 ```commandline
-```
 singularity build --sandbox ultra_sand docker://ultralytics/ultralytics
+```
 
 ## Open shell container and bind to volume
 To initiate a container from an image and generate a shell, use the singularity shell command:
