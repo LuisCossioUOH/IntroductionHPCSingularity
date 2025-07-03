@@ -24,10 +24,14 @@ singularity build --sandbox ultra_sand docker://ultralytics/ultralytics
 ## Open shell container and bind to volume
 To initiate a container from an image and generate a shell, use the singularity shell command:
 ```commandline
-singularity shell  instance://ultra1
-singularity shell  ultra.sif
+singularity shell instance://ultra1
+singularity shell ultra.sif
 ```
+In case of wanting to use Nvidia resources the nv keyword is required:
 
+```commandline
+singularity shell --nv ultra.sif
+```
 
 ## check instances
 List all running containers
@@ -39,7 +43,7 @@ singularity instance list
 ## Exec command in running container
 
 ```commandline
-singularity exec -e --pwd /home/ultra my_instance pwd
+singularity exec instance://instance2 pwd
 ```
 
 ```commandline
@@ -85,8 +89,8 @@ To copy files within a server and bring them to your local machine you must use 
 scp <username.server>@<IP Adress>:/server/path.txt /local/path.txt
 scp lcossio@172.16.105.194:/mnt/beegfs/home/lcossio/ultra/runs/train/weights/best.pt /home/luis/2025/ultra/weights/best.pt
 ```
-scp lcossio@172.16.105.194:/mnt/beegfs/home/lcossio/ultra/runs/train/weights/best.pt /home/luis/2025/ultra/weights/best.pt
-enviar archivo a server
+
+To send files into server:
 
 ```commandline
 sudo scp -r /home/luis/Downloads/train_cherry.zip  lcossio@172.16.105.194:/mnt/beegfs/home/lcossio/datasets/cherry_CO/train.zip
